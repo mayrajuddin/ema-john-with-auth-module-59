@@ -1,4 +1,4 @@
-.header{
+.header {
     height: 80px;
     background-color: #1C2B35;
     display: flex;
@@ -8,12 +8,20 @@
     padding-right: 140px;
 }
 
-.header a{
+.header a,
+.signOut-btn {
     color: #FFFFFF;
     text-decoration: none;
     font-size: 17px;
     margin-left: 36px;
 }
-.header a:hover{
+
+.header a:hover,
+.signOut-btn:hover {
     color: orange;
+}
+
+.signOut-btn {
+    background-color: transparent;
+    border: none;
 }
