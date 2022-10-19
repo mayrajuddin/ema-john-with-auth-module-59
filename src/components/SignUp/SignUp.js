@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/UseContext';
 import './SignUp.css'
 const SignUp = () => {
     const [error, setError] = useState(null)
-    const { createUser, loading } = useContext(AuthContext)
+    const { createUser, googleSign } = useContext(AuthContext)
     const navigate = useNavigate()
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -18,9 +18,13 @@ const SignUp = () => {
         }
         createUser(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
                 form.reset()
+                navigate('/')
+            }).catch(error => console.error(error))
+    }
+    const handleGoogle = () => {
+        googleSign()
+            .then(result => {
                 navigate('/')
             }).catch(error => console.error(error))
     }
@@ -45,7 +49,7 @@ const SignUp = () => {
                 </form>
                 {/* <input type="submit" value="Sign Up" /> */}
                 <p>Already have an Account? <Link to='/login'>Login</Link></p>
-                <button type='button'>Continue With Google</button>
+                <button type='button' onClick={handleGoogle}>Continue With Google</button>
             </div>
         </div>
     );
